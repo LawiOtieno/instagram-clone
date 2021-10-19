@@ -19,5 +19,27 @@ class Image(models.Model):
   def save_photo(self):
      self.save()
 
-  
+  @classmethod
+  def display_photos(cls):
+    photos = cls.objects.all().order_by('-posted_at')
+    return photos
+
+  @property
+  def saved_comments(self):
+    return self.comments.all()
+
+  @property
+  def saved_likes(self):
+    return self.photolikes.count()
+
+  @classmethod
+  def search_photos(cls,search_term):
+    photos = cls.objects.filter(photo_name__icontains = search_term).all()
+    return photos
+
+  def delete_post(self):
+    self.delete()
+
+  def __str__(self):
+    return "%s photo" % self.photo_name
 
