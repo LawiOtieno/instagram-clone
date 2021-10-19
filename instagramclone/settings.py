@@ -12,6 +12,9 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 import os
 from pathlib import Path
+
+# from decouple import config
+
 import django_heroku
 
 import cloudinary
@@ -49,7 +52,7 @@ INSTALLED_APPS = [
 
     'crispy_forms',
 
-    # 'bootstrap5',
+    'django_bootstrap5',
     'bootstrap4',
     'bootstrap3',
 ]

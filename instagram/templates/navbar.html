@@ -31,8 +31,6 @@
                   <i class="fa fa-home"></i>
                   <i></i>
                   <i class="fa fa-user-circle-o" aria-hidden="true"></i>
-                  <!-- <i class="far fa-heart" aria-hidden="true"></i>
-                  <i class="fas fa-heart" aria-hidden="true"></i> -->
                 </div>
               </div>
            
@@ -41,7 +39,7 @@
           </li>
           <li>
             <div class="col-sm-6 col-md-6">
-              <!-- {% if user.is_authenticated %} -->
+              {% if user.is_authenticated %}
           <li class="dropdown">
             <a href="#" class="dropdown-toggle btn btn-default" data-toggle="dropdown" role="button"
               aria-expanded="false">Account
@@ -62,7 +60,7 @@
               </li>
             </ul>
           </li>
-          <!-- {% else %} -->
+          {% else %}
           <li>
             <a class='btn btn-danger' href="/register">Sign Up</a>
           </li>
@@ -70,7 +68,7 @@
             <a class='btn btn-success' href="/login">Login</a>
           </li>
 
-          <!-- {% endif %} -->
+          {% endif %}
           </div>
           </li>
         </ul>

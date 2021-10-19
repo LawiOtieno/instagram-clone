@@ -16,7 +16,7 @@ from django.core.exceptions import ObjectDoesNotExist
 
 
 # Create your views here.
-# @login_required
+@login_required
 def index(request):
   comment_form = CommentsForm()
   post_form = postPhotoForm()
@@ -26,7 +26,7 @@ def index(request):
   return render (request,'index.html',{"photos":photos,"comment_form":comment_form,"post":post_form,"all_users":all_users})
 
 
-# @login_required
+@login_required
 def post(request):
   if request.method == 'POST':
     post_form = postPhotoForm(request.POST,request.FILES) 
@@ -65,7 +65,7 @@ def register(request):
   return render(request,'registration/registration_form.html',{"form":form})
 
 
-# @login_required
+@login_required
 def profile(request):
   comment_form = CommentsForm()
   current_user = request.user
@@ -76,7 +76,7 @@ def profile(request):
   return render(request,'profile/profile.html',{"photos":photos,'all_users':all_users,'comment_form':comment_form,'user_photos':user_photos,"current_user":current_user})
 
 
-# @login_required
+@login_required
 def search(request):
   if 'search_user' in request.GET and request.GET["search_user"]:
     search_term = request.GET.get('search_user')
@@ -87,13 +87,13 @@ def search(request):
     return render(request,'search.html')
  
 
-# @login_required
+@login_required
 def allcomments(request,photo_id):
   photo = Image.objects.filter(pk = photo_id).first()
   return render(request,'comments.html',{"photo":photo})
 
 
-# @login_required
+@login_required
 def users_profile(request,pk):
   comment_form = CommentsForm()
   user = User.objects.get(pk = pk)
@@ -104,7 +104,7 @@ def users_profile(request,pk):
 "photos":photos,"c_user":c_user})
 
 
-# @login_required
+@login_required
 def update_profile(request):
   if request.method == 'POST':
     user_form = UpdateUser(request.POST,instance=request.user)
@@ -124,7 +124,7 @@ def update_profile(request):
   return render(request,'profile/update.html',params)
 
 
-# @login_required
+@login_required
 def follow(request,user_id):
   followee = request.user
   followed = Follows.objects.get(pk=user_id)
@@ -142,7 +142,7 @@ def like(request, image_id):
     return HttpResponseRedirect(request.META['HTTP_REFERER'])
 
 
-# @login_required
+@login_required
 def unfollow(request,user_id):
   followee = request.user
   follower = Follows.objects.get(pk=user_id)
@@ -151,7 +151,7 @@ def unfollow(request,user_id):
   return redirect('users_profile')
 
 
-# @login_required
+@login_required
 def delete(request,photo_id):
   current_user = request.user
   photo = Image.objects.get(pk=photo_id)
@@ -160,7 +160,7 @@ def delete(request,photo_id):
   return redirect('home')
 
 
-# @login_required
+@login_required
 def commentFunction(request,photo_id):
   c_form = CommentsForm()
   photo = Image.objects.filter(pk = photo_id).first()
