@@ -1,10 +1,9 @@
 {% extends "base.html" %}
 {% load bootstrap3 %}
 {% block content %}
-<div class="container-fluid">
+<div class="container">
   <div class="row">
-    <div class="col-md-3"></div>
-    <div class="col-md-6">
+    <div class="col-md">
       <div class="row">
         <div class="col-md-4">
           {% if user.profile.profile_photo.url %}
@@ -17,11 +16,11 @@
         <div class="col-md-8">
           <div class="row">
             <div class="col-md-4">
-              <p class="">{{user.username}}</p>
+              <p class=""><strong>Username: </strong> {{user.username}}</p>
             </div>
             <div class="col-md-4">
               <p><a href="{% url 'update_profile' %}">
-                <button class="btn btn-info ml-4 pl-3">Update Profile</button>
+                <button class="btn btn-danger m-2 pl-3">Update Your Profile</button>
               </a></p>
             </div>
           </div>
@@ -44,39 +43,39 @@
       <hr style="height: 2px; background-color:rgb(161, 145, 145)">
 
     </div>
-
-    <div class="col-md-3"></div>
   </div>
   <div class="row">
-    <div class="col-md-3"></div>
-    <div class="col-md-4">
+    <div class="col-md-8">
       {% if photos %}
       {% for photo in photos %}
       <div class="profile">
         <div class="row">
           <div class="col-md-2">
             {% if photo.user.profile.profile_photo.url %}
-            <p><a href="{% url 'users_profile' photo.user.id %}"><img class="profile_photo"
-                  src="{{ photo.user.profile.profile_photo.url }}" alt="{{ photo.profile.name }}"></p>
+            <p>
+              <a href="{% url 'users_profile' photo.user.id %}">
+                <img src="{{ photo.user.profile.profile_photo.url }}" alt="{{ photo.profile.name }}" class="rounded-circle border" alt="profile" style="height: 10vh; width:10vh; border-radius:50%">
+              </a>
+            </p>
                   {% else %}
-                  <i style="font-size:100px;color:#0e0d0d" class="fa fa-user" aria-hidden="true"></i>
+                  <i style="font-size:100px;color:black" class="fa fa-user" aria-hidden="true"></i>
                   {% endif %}
           </div>
           <div class="col-md-2">
-            <p class="username" style="margin-top: 5px;">{{ photo.user.username }}</p>
+            <p style="margin-top: 5px;">{{ photo.user.username }}</p>
           </div>
         </div>
-        </a>
       </div>
       <div class="card-header">
-        <a href="{% url 'photo.detail' photo.id %}" class="open-project"><img src="{{photo.photo.url}}" alt="" class="img-thumbnail"></a>
+        <a href="{% url 'photo.detail' photo.id %}" class="open-project"><img src="{{photo.photo.url}}" alt=""></a>
       </div>
       <div class="card-body">
         <div>
           <a href=" {% url 'like' image_id=photo.id %}">
-            <i class="fa fa-heart-o fa-3x text-success" aria-hidden="true"></i></a>
+            <i class="fa fa-heart-o fa-3x text-success" aria-hidden="true"></i>
+          </a>
           <p><strong class="ml-3 photo_likes">{{photo.saved_likes}} </strong>
-            <strong>Likes</strong>
+            likes
           </p>
         </div>
         <div>
@@ -96,9 +95,9 @@
       {% endif %}
     </div>
     
-    <div class="col-md-2">
+    <div class="col-md-4">
       <div class="">
-        <h2>Suggestions for you</h2>
+        <h2>People 👇</h2>
       </div>
       <div class="">
         {% if all_users %}
@@ -106,11 +105,14 @@
         <div class="row">
           <div class="col-md-4">
             {% if person.profile.profile_photo.url %}
-            <p><a href="{% url 'users_profile' person.id  %}"><img src="{{person.profile.profile_photo.url}}"
-                  class="rounded-circle border" alt="profile" style="height: 8vh; width:8vh; border-radius:50%"></a></p>
-                  {% else %}
-                  <i style="font-size:100px;color:#1a1919" class="fa fa-user" aria-hidden="true"></i>
-                  {% endif %}
+            <p>
+              <a href="{% url 'users_profile' person.id  %}">
+                <img src="{{person.profile.profile_photo.url}}" class="rounded-circle border" alt="profile" style="height: 10vh; width:10vh; border-radius:50%">
+              </a>
+            </p>
+            {% else %}
+            <i style="font-size:100px;color:black" class="fa fa-user" aria-hidden="true"></i>
+            {% endif %}
           </div>
           <div class="col-md-4">
             <p></p><a href="{% url 'users_profile' person.id   %}">
@@ -123,7 +125,6 @@
         {% endif %}
         </div>
     </div>
-    <div class="col-md-3"></div>
   </div>
 </div>
 {% endblock %}

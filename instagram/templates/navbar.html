@@ -1,11 +1,11 @@
 {% load bootstrap3 %}
 
-<div class="container-fluid">
-  <nav class="navbar navbar-default">
-    <div class="container-fluid">
+<div style="border: 1px solid black;">
+  <nav class="navbar">
+    <div class="container">
       <div class="navbar-header">
         <a class="navbar-brand" href="{% url 'home' %}">
-          <p style="color: black;font-size:39px; font-style: italic;"><i class="fa fa-instagram"  aria-hidden="true"></i> Instagram</p>
+          <p style="color: black;font-size:39px; font-style: italic;">Instagram</p>
         </a>
         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
           data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
@@ -18,20 +18,16 @@
       
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <ul class="nav navbar-nav navbar-right">
+        <ul class="nav navbar-nav navbar-right d-inline-flex">
           <li>
             <form class="navbar-form" role="search" action="{% url 'search' %}">
 
               <div class="input-group">
-                <input type="text" width="90%" class="form-control" placeholder="Search user..." name="search_user">
-                <div style="width:10% ;" class="input-group-btn btn-">
-                  <button class="btn btn-primary" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+                <input type="text" width="70%" class="form-control" placeholder="Search Instagram user..." name="search_user">
+                <div style="width:10% ;" class="input-group-btn">
+                  <button class="btn btn-danger" type="submit"> <i class="glyphicon glyphicon-search"></i></button>
                 </div>
-                <div>
-                  <i class="fa fa-home"></i>
-                  <i></i>
-                  <i class="fa fa-user-circle-o" aria-hidden="true"></i>
-                </div>
+                
               </div>
            
 
@@ -77,3 +73,4 @@
 </div>
 </nav>
 </div>
+<br><br><br>

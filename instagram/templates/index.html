@@ -2,10 +2,9 @@
 {% load bootstrap3 %}
 {% block content %}
 
-<div class="container-fluid">
+<div class="container">
   <div class="row">
-    <div class="col-md-3"></div>
-    <div class="col-md-4">
+    <div class="col-md-9">
 
       {% if photos %}
       {% for photo in photos %}
@@ -14,10 +13,13 @@
           <div class="col-md-2">
             {% if photo.user.profile.profile_photo.url %}
 
-            <p><a href="{% url 'users_profile' photo.user.id %}"><img class="profile_photo"
-                  src="{{ photo.user.profile.profile_photo.url }}" alt="{{ photo.profile.name }}"></a></p>
+            <p>
+              <a href="{% url 'users_profile' photo.user.id %}"> 
+                <img class="userPhoto" src="{{ photo.user.profile.profile_photo.url }}" alt="{{ photo.profile.name }}">
+              </a>
+            </p>
                   {% else %}
-                  <i style="font-size:100px;color:#0e0c0d" class="fa fa-user" aria-hidden="true"></i>
+                  <i style="font-size:100px;color:black" class="fa fa-user" aria-hidden="true"></i>
                   {% endif %}
           </div>
           <div class="col-md-2">
@@ -38,10 +40,10 @@
           </p>
         </div>
         <div>
-          <p class=""><strong>{{photo.name}}</strong> {{photo.caption}}</p>
+          <p class=""><strong>{{photo.name}}</strong> <em> {{photo.caption}}</em></p>
         </div>
         {% for comment in photo.saved_comments %}
-        <p class="ml-3"><span class="font-weight-bold text-success">{{comment.user.username}}</span>:
+        <p class="ml-3"><span class="text-info"><strong>{{comment.user.username}}</strong></span>:
           {{comment.comment}}</p>
         {% endfor %}
         <form action="{% url 'commentFunction' photo_id=photo.id %}" method="post">
@@ -54,9 +56,9 @@
       {% endfor %}
       {% endif %}
     </div>
-    <div class="col-md-2">
+    <div class="col-md-3">
       <div class="">
-        <h2>Suggestions for you</h2>
+        <h2>All People 👇</h2>
       </div>
       <div class="">
         {% if all_users %}
@@ -69,12 +71,12 @@
             <p><a href="{% url 'users_profile' person.id  %}"><img src="{{person.profile.profile_photo.url}}"
                   class="rounded-circle border" alt="profile" style="height: 8vh; width:8vh; border-radius:50%"></a></p>
                   {% else %}
-                  <i style="font-size:100px;color:#111111" class="fa fa-user" aria-hidden="true"></i>
+                  <i style="font-size:100px; color: black;" class="fa fa-user" aria-hidden="true"></i>
                   {% endif %}
           </div>
 
           <div class="col-md-4">
-            <p></p><a href="{% url 'users_profile' person.id   %}">
+            <p></p><a href="{% url 'users_profile' person.id %}">
               <p class="text-primary">{{person.username}}</p>
               </p>
             </a>
@@ -84,7 +86,6 @@
         {% endif %}
       </div>
     </div>
-    <div class="col-md-3"></div>
   </div>
 </div>
 {% endblock %}
