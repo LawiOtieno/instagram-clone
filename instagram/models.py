@@ -101,3 +101,17 @@ class Comment(models.Model):
     return "%s comment" % self.photo
 
 
+class Follows(models.Model):
+  follower = models.ForeignKey(Profile, related_name='following',on_delete = models.CASCADE)
+  followee = models.ForeignKey(Profile, related_name='followers',on_delete = models.CASCADE)
+
+  def __str__(self):
+    return "%s follower" % self.follower
+
+
+class Like(models.Model):
+  image =models.ForeignKey(Image, on_delete = models.CASCADE,related_name='photolikes')
+  liker=models.ForeignKey(User,on_delete = models.CASCADE,related_name='userlikes')
+
+  def __str__(self):
+    return "%s like" % self.photo
