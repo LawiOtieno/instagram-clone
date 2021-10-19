@@ -103,3 +103,60 @@ def users_profile(request,pk):
   return render(request,'profile/users_profile.html',{"user":user,'comment_form':comment_form,
 "photos":photos,"c_user":c_user})
 
+
+# @login_required
+def update_profile(request):
+  if request.method == 'POST':
+    user_form = UpdateUser(request.POST,instance=request.user)
+    profile_form = UpdateProfile(request.POST,request.FILES,instance=request.user.profile)
+    if user_form.is_valid() and profile_form.is_valid():
+      user_form.save()
+      profile_form.save()
+      messages.success(request,'Your Profile account has been updated successfully')
+      return redirect('profile')
+  else:
+    user_form = UpdateUser(instance=request.user)
+    profile_form = UpdateProfile(instance=request.user.profile) 
+  params = {
+    'user_form':user_form,
+    'profile_form':profile_form
+  }
+  return render(request,'profile/update.html',params)
+
+
+# @login_required
+def follow(request,user_id):
+  followee = request.user
+  followed = Follows.objects.get(pk=user_id)
+  follow_data,created = Follows.objects.get_or_create(follower = followee,followee = followed)
+  follow_data.save()
+  return redirect('others_profile')
+
+
+def like(request, image_id):
+    current_user = request.user
+    image=Image.objects.get(id=image_id)
+    new_like,created= Like.objects.get_or_create(liker=current_user, image=image)
+    new_like.save()
+
+    return HttpResponseRedirect(request.META['HTTP_REFERER'])
+
+
+# @login_required
+def unfollow(request,user_id):
+  followee = request.user
+  follower = Follows.objects.get(pk=user_id)
+  follow_data = Follows.objects.filter(follower = follower,followee = followee).first()
+  follow_data.delete()
+  return redirect('users_profile')
+
+
+# @login_required
+def delete(request,photo_id):
+  current_user = request.user
+  photo = Image.objects.get(pk=photo_id)
+  if photo:
+    photo.delete_post()
+  return redirect('home')
+
+
