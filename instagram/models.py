@@ -43,3 +43,12 @@ class Image(models.Model):
   def __str__(self):
     return "%s photo" % self.photo_name
 
+
+class Profile(models.Model):
+  profile_photo = CloudinaryField('image')
+  bio = models.TextField()
+  user = models.OneToOneField(User,on_delete = models.CASCADE)
+
+
+
+
