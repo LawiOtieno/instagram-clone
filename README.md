@@ -11,7 +11,7 @@ Django Instagram replica web application. It requires users to sign in to the ap
 Lawrence Otieno is a Fullstack developer who studied coding in Moringa School, under ACCESS SPONSORSHIP.
 
 ## Support/Donate
-You can support my work in many ways, including buying me coffee 😉😊. Help me continue...
+You can support my work in many ways, including buying me coffee  ☕️. Help me continue...
 <!-- [Buy Me Coffee ☕️](https://ko-fi.com/streetgrandmaster) -->
 [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/N4N26PU7L)
 
