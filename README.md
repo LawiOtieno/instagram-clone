@@ -2,11 +2,19 @@
 
 This is django website application.
 
-## Author(s) Info
-Lawrence Otieno is a Fullstack developer who studied coding in Moringa School, under ACCESS SPONSORSHIP.
 
 ## Description
 Django Instagram replica web application. It requires users to sign in to the application to start using and upload pictures to the application.
+
+
+## Author(s) Info
+Lawrence Otieno is a Fullstack developer who studied coding in Moringa School, under ACCESS SPONSORSHIP.
+
+## Support/Donate
+You can support my work in many ways, including buying me coffee 😉😊. Help me continue...
+<!-- [Buy Me Coffee ☕️](https://ko-fi.com/streetgrandmaster) -->
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/N4N26PU7L)
+
 
 ## Screenshot(s)
 ![profile](https://images2.imgbox.com/96/85/qwLQ4L9C_o.png)
